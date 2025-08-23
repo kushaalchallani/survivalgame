@@ -10,18 +10,26 @@ public class SelectionManager : MonoBehaviour {
     }
 
     void Update() {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Camera.main == null) return;
+
+        Vector3 mousePos = Input.mousePosition;
+        if (mousePos.x < 0 || mousePos.x > Screen.width || mousePos.y < 0 || mousePos.y > Screen.height) {
+            interaction_Info_UI.SetActive(false);
+            return;
+        }
+
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
             var selectionTransform = hit.transform;
 
-            if (selectionTransform.GetComponent<InteractableObject>()) {
+            if (selectionTransform.GetComponent<InteractableObject>() && selectionTransform.GetComponent<InteractableObject>().playerInRange) {
                 interaction_text.text = selectionTransform.GetComponent<InteractableObject>().GetItemName();
                 interaction_Info_UI.SetActive(true);
-            } else {
+            } else { // if not looking at an interactable object 
                 interaction_Info_UI.SetActive(false);
             }
-        } else {
+        } else { // if not looking at anything
             interaction_Info_UI.SetActive(false);
         }
     }
