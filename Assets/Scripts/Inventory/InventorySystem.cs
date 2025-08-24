@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour {
@@ -8,7 +9,7 @@ public class InventorySystem : MonoBehaviour {
 
     public GameObject inventoryScreenUI;
     private List<GameObject> slotList = new List<GameObject>();
-    private List<string> itemList = new List<string>();
+    public List<string> itemList = new List<string>();
     private GameObject itemToAdd;
     private GameObject whatSlotToEquip;
     public bool isOpen;
@@ -87,5 +88,24 @@ public class InventorySystem : MonoBehaviour {
         return new GameObject();
     }
 
+    public void RemoveItem(string nameToRemove, int amountToRemove) {
+        int counter = amountToRemove;
+        for (var i = slotList.Count - 1; i >= 0; i--) {
+            if (slotList[i].transform.childCount > 0) {
+                if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0) {
+                    Destroy(slotList[i].transform.GetChild(0).gameObject);
+                    counter--;
+                }
+            }
+        }
+    }
 
+    public void ReCalculateList() {
+        itemList.Clear();
+        foreach (GameObject slot in slotList) {
+            if (slot.transform.childCount > 0) {
+                itemList.Add(slot.transform.GetChild(0).name.Replace("(Clone)", ""));
+            }
+        }
+    }
 }
