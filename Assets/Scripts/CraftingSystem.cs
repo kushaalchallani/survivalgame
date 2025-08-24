@@ -67,7 +67,7 @@ public class CraftingSystem : MonoBehaviour {
 
 
     public IEnumerator calculate() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         InventorySystem.Instance.ReCalculateList();
     }
 
