@@ -61,6 +61,9 @@ public class InventorySystem : MonoBehaviour {
         itemToAdd.transform.SetParent(whatSlotToEquip.transform);
 
         itemList.Add(itemName);
+
+        ReCalculateList();
+        CraftingSystem.Instance.RefreshNeededItems();
     }
 
     public bool CheckIfFull() {
@@ -98,6 +101,9 @@ public class InventorySystem : MonoBehaviour {
                 }
             }
         }
+
+        ReCalculateList();
+        CraftingSystem.Instance.RefreshNeededItems();
     }
 
     public void ReCalculateList() {
