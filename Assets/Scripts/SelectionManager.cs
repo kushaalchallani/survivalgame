@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SelectionManager : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class SelectionManager : MonoBehaviour {
     public bool onTarget;
     public GameObject selectedObject;
     [SerializeField] GameObject interaction_Info_UI;
+    [SerializeField] Image centerDotImage;
+    [SerializeField] Image handIcon;
     TextMeshProUGUI interaction_text;
 
     private void Start() {
@@ -44,13 +47,26 @@ public class SelectionManager : MonoBehaviour {
 
                 interaction_text.text = interactable.GetItemName();
                 interaction_Info_UI.SetActive(true);
+
+                if (interactable.CompareTag("Pickable")) {
+                    centerDotImage.gameObject.SetActive(false);
+                    handIcon.gameObject.SetActive(true);
+                } else {
+                    centerDotImage.gameObject.SetActive(true);
+                    handIcon.gameObject.SetActive(false);
+                }
+
             } else { // if not looking at an interactable object 
                 onTarget = false;
                 interaction_Info_UI.SetActive(false);
+                centerDotImage.gameObject.SetActive(true);
+                handIcon.gameObject.SetActive(false);
             }
         } else { // if not looking at anything
             onTarget = false;
             interaction_Info_UI.SetActive(false);
+            centerDotImage.gameObject.SetActive(true);
+            handIcon.gameObject.SetActive(false);
         }
     }
 }
