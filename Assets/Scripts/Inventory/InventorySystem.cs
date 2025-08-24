@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour {
 
@@ -13,6 +13,12 @@ public class InventorySystem : MonoBehaviour {
     private GameObject itemToAdd;
     private GameObject whatSlotToEquip;
     public bool isOpen;
+
+
+    //Pickup Alert
+    [SerializeField] GameObject pickupAlert;
+    [SerializeField] TextMeshProUGUI pickupName;
+    [SerializeField] Image pickupImage;
 
     private void Awake() {
         if (Instance != null && Instance != this) {
@@ -61,6 +67,8 @@ public class InventorySystem : MonoBehaviour {
         itemToAdd.transform.SetParent(whatSlotToEquip.transform);
 
         itemList.Add(itemName);
+
+        TriggerPickupPopup(itemName, itemToAdd.GetComponent<Image>().sprite);
 
         ReCalculateList();
         CraftingSystem.Instance.RefreshNeededItems();
@@ -113,5 +121,11 @@ public class InventorySystem : MonoBehaviour {
                 itemList.Add(slot.transform.GetChild(0).name.Replace("(Clone)", ""));
             }
         }
+    }
+
+    void TriggerPickupPopup(string itemName, Sprite itemSprite) {
+        pickupAlert.SetActive(true);
+        pickupName.text = itemName;
+        pickupImage.sprite = itemSprite;
     }
 }
