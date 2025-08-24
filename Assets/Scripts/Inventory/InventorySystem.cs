@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -68,7 +69,7 @@ public class InventorySystem : MonoBehaviour {
 
         itemList.Add(itemName);
 
-        TriggerPickupPopup(itemName, itemToAdd.GetComponent<Image>().sprite);
+        TriggerPickupPopUp(itemName, itemToAdd.GetComponent<Image>().sprite);
 
         ReCalculateList();
         CraftingSystem.Instance.RefreshNeededItems();
@@ -123,9 +124,18 @@ public class InventorySystem : MonoBehaviour {
         }
     }
 
-    void TriggerPickupPopup(string itemName, Sprite itemSprite) {
+    void TriggerPickupPopUp(string itemName, Sprite itemSprite) {
         pickupAlert.SetActive(true);
+
         pickupName.text = itemName;
+
         pickupImage.sprite = itemSprite;
+
+        StartCoroutine(HidePickupAlertAfterDelay(2f));
+    }
+
+    private IEnumerator HidePickupAlertAfterDelay(float delay) {
+        yield return new WaitForSeconds(delay);
+        pickupAlert.SetActive(false);
     }
 }
