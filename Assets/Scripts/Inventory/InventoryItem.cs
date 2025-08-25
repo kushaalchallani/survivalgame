@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler {
 
+    // --- Is this item trashable --- //
+    public bool isTrashable;
 
     // --- Item Info UI --- //
     private GameObject itemInfoUI;
