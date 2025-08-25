@@ -566,6 +566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb9ca1b6800111745966dda97a13ea1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 100
+  currentCalories: 0
+  maxCalories: 2000
+  currentHydrationPercent: 0
+  maxHydrationPercent: 100
 --- !u!4 &169252048
 Transform:
   m_ObjectHideFlags: 0
@@ -1872,7 +1878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &611609524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4366,7 +4372,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -674, y: 306}
+  m_AnchoredPosition: {x: -721, y: 345}
   m_SizeDelta: {x: 450, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1172536344
@@ -6903,6 +6909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913009121}
   - component: {fileID: 1913009122}
+  - component: {fileID: 1913009123}
   m_Layer: 5
   m_Name: HealthBarContainer
   m_TagString: Untagged
@@ -6982,6 +6989,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1913009123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913009120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ba8b643586ba534f9d10a4a7ae6e0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCounter: {fileID: 766247958}
+  playerState: {fileID: 169252046}
 --- !u!1 &1919374616
 GameObject:
   m_ObjectHideFlags: 0

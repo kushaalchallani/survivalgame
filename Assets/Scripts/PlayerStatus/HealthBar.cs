@@ -1,16 +1,21 @@
+using TMPro;
 using UnityEngine;
-
-public class HealthBar : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+using UnityEngine.UI;
+public class HealthBar : MonoBehaviour {
+    [SerializeField] TextMeshProUGUI healthCounter;
+    [SerializeField] GameObject playerState;
+    private float currentHealth, maxHealth;
+    private Slider slider;
+    void Awake() {
+        slider = GetComponent<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        currentHealth = playerState.GetComponent<PlayerState>().currentHealth;
+        maxHealth = playerState.GetComponent<PlayerState>().maxHealth;
+
+        float fillValue = currentHealth / maxHealth;
+        slider.value = fillValue;
+        healthCounter.text = $"{currentHealth}/{maxHealth}";
     }
 }
