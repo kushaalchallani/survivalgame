@@ -14,7 +14,7 @@ public class InventorySystem : MonoBehaviour {
     private GameObject itemToAdd;
     private GameObject whatSlotToEquip;
     public bool isOpen;
-
+    public GameObject ItemInfoUI;
 
     //Pickup Alert
     [SerializeField] GameObject pickupAlert;

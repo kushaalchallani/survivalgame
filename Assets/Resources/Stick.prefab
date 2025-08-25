@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7021991743158341220}
   - component: {fileID: 5756891639078488294}
   - component: {fileID: 4447737228000734796}
+  - component: {fileID: -9208367248655767103}
   m_Layer: 5
   m_Name: Stick
   m_TagString: Untagged
@@ -101,3 +102,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &-9208367248655767103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7904869604082133466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40edadb4b11ed3848b6f0e8dd9a4e086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Stick
+  itemDescription: A dried stick.
+  itemFunctionality: Used for crafting.
