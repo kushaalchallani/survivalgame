@@ -105,7 +105,7 @@ public class InventorySystem : MonoBehaviour {
         for (var i = slotList.Count - 1; i >= 0; i--) {
             if (slotList[i].transform.childCount > 0) {
                 if (slotList[i].transform.GetChild(0).name == nameToRemove + "(Clone)" && counter != 0) {
-                    Destroy(slotList[i].transform.GetChild(0).gameObject);
+                    DestroyImmediate(slotList[i].transform.GetChild(0).gameObject);
                     counter--;
                 }
             }
