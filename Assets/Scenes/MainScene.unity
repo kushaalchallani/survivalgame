@@ -570,6 +570,7 @@ MonoBehaviour:
   maxHealth: 100
   currentCalories: 0
   maxCalories: 2000
+  playerBody: {fileID: 2124300534}
   currentHydrationPercent: 0
   maxHydrationPercent: 100
 --- !u!4 &169252048
@@ -1782,6 +1783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 606413474}
   - component: {fileID: 606413475}
+  - component: {fileID: 606413476}
   m_Layer: 5
   m_Name: CaloriesBarContainer
   m_TagString: Untagged
@@ -1861,6 +1863,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &606413476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606413473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1416f010213d3a04ca4a6b53f4a04a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  caloriesCounter: {fileID: 314539177}
+  playerState: {fileID: 169252046}
 --- !u!1 &611609523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,6 +2195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692182062}
   - component: {fileID: 692182063}
+  - component: {fileID: 692182064}
   m_Layer: 5
   m_Name: HydrationBarContainer
   m_TagString: Untagged
@@ -2258,6 +2275,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &692182064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692182061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42fab2712676d08489e2b06d383f7375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hydrationCounter: {fileID: 967591443}
+  playerState: {fileID: 169252046}
 --- !u!1 &705230430
 GameObject:
   m_ObjectHideFlags: 0
@@ -7226,7 +7257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -523, y: 258}
+  m_AnchoredPosition: {x: -532.5, y: 161.1}
   m_SizeDelta: {x: 800, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929707900

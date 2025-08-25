@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour {
@@ -33,9 +35,20 @@ public class PlayerState : MonoBehaviour {
     void Start() {
         currentHealth = maxHealth;
         currentCalories = maxCalories;
+        currentHydrationPercent = maxHydrationPercent;
+
+        StartCoroutine(depleteHydration());
+    }
+
+    IEnumerator depleteHydration() {
+        while (true) {
+            yield return new WaitForSeconds(10);
+            currentHydrationPercent -= 1;
+        }
     }
 
     void Update() {
+        //Calories decrease based on distance traveled
         distanceTraveled += Vector3.Distance(playerBody.transform.position, lastPosition);
         lastPosition = playerBody.transform.position;
 
