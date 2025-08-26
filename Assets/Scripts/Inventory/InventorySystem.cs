@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +45,10 @@ public class InventorySystem : MonoBehaviour {
             inventoryScreenUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            SelectionManager.instance.DisableSelection();
+            SelectionManager.instance.GetComponent<SelectionManager>().enabled = false;
+
             isOpen = true;
 
         } else if (Input.GetKeyDown(KeyCode.Tab) && isOpen) {
@@ -52,6 +57,9 @@ public class InventorySystem : MonoBehaviour {
             if (!CraftingSystem.Instance.isOpen) {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+
+                SelectionManager.instance.EnableSelection();
+                SelectionManager.instance.GetComponent<SelectionManager>().enabled = true;
             }
             isOpen = false;
         }
