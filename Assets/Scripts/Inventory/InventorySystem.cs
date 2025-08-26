@@ -33,6 +33,7 @@ public class InventorySystem : MonoBehaviour {
     void Start() {
         isOpen = false;
         PopulateSlotList();
+        Cursor.visible = false;
     }
 
 
@@ -42,6 +43,7 @@ public class InventorySystem : MonoBehaviour {
 
             inventoryScreenUI.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             isOpen = true;
 
         } else if (Input.GetKeyDown(KeyCode.Tab) && isOpen) {
@@ -49,6 +51,7 @@ public class InventorySystem : MonoBehaviour {
 
             if (!CraftingSystem.Instance.isOpen) {
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             isOpen = false;
         }
