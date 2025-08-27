@@ -27,6 +27,13 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] float hydrationEffect;
 
 
+    // --- Equiping --- //
+    public bool isEquippable;
+    private GameObject itemPendingEquipping;
+    public bool isInsideQuickSlot;
+    public bool isSelected;
+
+
 
     private void Start() {
         itemInfoUI = InventorySystem.Instance.ItemInfoUI;
@@ -34,6 +41,14 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         itemInfoUI_itemDescription = itemInfoUI.transform.Find("itemDescription").GetComponent<TextMeshProUGUI>();
         itemInfoUI_itemFunctionality = itemInfoUI.transform.Find("itemFunctionality").GetComponent<TextMeshProUGUI>();
         itemInfoUI_itemImage = itemInfoUI.transform.Find("itemIcon").GetComponent<Image>();
+    }
+
+    private void Update() {
+        if (isSelected) {
+            gameObject.GetComponent<DragDrop>().enabled = false;
+        } else {
+            gameObject.GetComponent<DragDrop>().enabled = true;
+        }
     }
 
     // Triggered when the mouse enters into the area of the item that has this script.
@@ -54,11 +69,19 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         //Right Mouse Button Click on
         if (eventData.button == PointerEventData.InputButton.Right) {
             if (isConsumable) {
-                // Setting this specific gameobject to be the item we want to destroy later
+                // Setting  this specific gameobject to be the item we want to destroy later
                 itemPendingConsumption = gameObject;
                 consumingFunction(healthEffect, caloriesEffect, hydrationEffect);
             }
+
+            if (isEquippable && isInsideQuickSlot == false && EquipSystem.Instance.CheckIfFull() == false) {
+                EquipSystem.Instance.AddToQuickSlots(gameObject);
+                isInsideQuickSlot = true;
+            }
         }
+
+
+
     }
 
     public void OnPointerUp(PointerEventData eventData) {
