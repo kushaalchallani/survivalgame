@@ -9,8 +9,10 @@ public class EquipSystem : MonoBehaviour {
     [SerializeField] GameObject quickSlotsPanel;
 
     [SerializeField] GameObject numbersHolder;
+    [SerializeField] GameObject toolHolder;
     private List<GameObject> quickSlotsList = new List<GameObject>();
     private GameObject selectedItem;
+    private GameObject selectedItemModel;
 
     private int selectedNumber = -1;
 
@@ -104,6 +106,8 @@ public class EquipSystem : MonoBehaviour {
                 selectedItem = getSelectedItem(number);
                 selectedItem.GetComponent<InventoryItem>().isSelected = true;
 
+                SetEquipedModel(selectedItem);
+
                 //Changing the color
                 foreach (Transform child in numbersHolder.transform) {
                     child.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().color = Color.gray;
@@ -111,13 +115,20 @@ public class EquipSystem : MonoBehaviour {
 
                 TextMeshProUGUI toBeChanged = numbersHolder.transform.Find("number" + number).transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
                 toBeChanged.color = Color.white;
-            } else { //selecting the same slot i.e deselecting
+            } else {
+
+                //selecting the same slot i.e deselecting
                 selectedNumber = -1;
 
                 //Unselect the previously selected item
                 if (selectedItem != null) {
                     selectedItem.gameObject.GetComponent<InventoryItem>().isSelected = false;
                     selectedItem = null;
+                }
+
+                if (selectedItemModel != null) {
+                    DestroyImmediate(selectedItemModel.gameObject);
+                    selectedItemModel = null;
                 }
 
                 //Changing the color
@@ -137,5 +148,18 @@ public class EquipSystem : MonoBehaviour {
     }
     private GameObject getSelectedItem(int slotNumber) {
         return quickSlotsList[slotNumber - 1].transform.GetChild(0).gameObject;
+    }
+
+    private void SetEquipedModel(GameObject selectedItem) {
+
+        if (selectedItemModel != null) {
+            DestroyImmediate(selectedItemModel.gameObject);
+            selectedItemModel = null;
+        }
+
+
+        string selectedItemName = selectedItem.name.Replace("(Clone)", "");
+        selectedItemModel = Instantiate(Resources.Load<GameObject>(selectedItemName + "_Model"), new Vector3(0.6f, 0.5f, 0.9f), Quaternion.Euler(90, -15, 75));
+        selectedItemModel.transform.SetParent(toolHolder.transform, false);
     }
 }
