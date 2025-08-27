@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6974064114076919206}
   - component: {fileID: 5128523645937406316}
   - component: {fileID: 2661129825023354578}
+  - component: {fileID: 6371776785818586920}
+  - component: {fileID: 375459926091260324}
   m_Layer: 0
   m_Name: Axe_Model
   m_TagString: Untagged
@@ -109,3 +111,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -27388881829485594, guid: e00ccb7265930194a9a378dbdc86d461, type: 3}
+--- !u!95 &6371776785818586920
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641913783476678841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dac4e34f4b351484789ee56ed21d258d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &375459926091260324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641913783476678841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0362288872eb846b3d68f5335953cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
