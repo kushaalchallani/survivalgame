@@ -12,6 +12,7 @@ public class SelectionManager : MonoBehaviour {
     [SerializeField] Image centerDotImage;
     [SerializeField] Image handIcon;
     TextMeshProUGUI interaction_text;
+    public bool handIsVisible;
 
     private void Start() {
         onTarget = false;
@@ -51,9 +52,11 @@ public class SelectionManager : MonoBehaviour {
                 if (interactable.CompareTag("Pickable")) {
                     centerDotImage.gameObject.SetActive(false);
                     handIcon.gameObject.SetActive(true);
+                    handIsVisible = true;
                 } else {
                     centerDotImage.gameObject.SetActive(true);
                     handIcon.gameObject.SetActive(false);
+                    handIsVisible = false;
                 }
 
             } else { // if not looking at an interactable object 
@@ -61,12 +64,16 @@ public class SelectionManager : MonoBehaviour {
                 interaction_Info_UI.SetActive(false);
                 centerDotImage.gameObject.SetActive(true);
                 handIcon.gameObject.SetActive(false);
+                handIsVisible = false;
+
             }
         } else { // if not looking at anything
             onTarget = false;
             interaction_Info_UI.SetActive(false);
             centerDotImage.gameObject.SetActive(true);
             handIcon.gameObject.SetActive(false);
+            handIsVisible = false;
+
         }
     }
 

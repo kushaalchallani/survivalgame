@@ -9,7 +9,7 @@ public class EquippableItem : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && InventorySystem.Instance.isOpen == false && CraftingSystem.Instance.isOpen == false && SelectionManager.instance.handIsVisible == false) {
             animator.SetTrigger("hit");
         }
     }
